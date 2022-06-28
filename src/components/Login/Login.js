@@ -1,8 +1,11 @@
 import './Login.css'
 import axios from 'axios';
 import swAlert from '@sweetalert/with-react'
+import { useNavigate } from 'react-router-dom';
 
 const Loguin = () => {
+
+    const navigate = useNavigate()
 
     const submitHandler = (e) => {
 
@@ -31,10 +34,10 @@ const Loguin = () => {
         axios
             .post('http://challenge-react.alkemy.org', { email, password })
             .then(res => {
-                console.log(res.data)
                 swAlert(<h2>Estás logueado correctamente!</h2>);
                 const tokenRecibido = res.data.token;
                 localStorage.setItem('token', tokenRecibido);
+                navigate('/listado')
             })
     }
 
