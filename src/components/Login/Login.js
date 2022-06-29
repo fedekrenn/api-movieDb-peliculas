@@ -1,11 +1,18 @@
+// Css
 import './Login.css'
+
+// Librerías
 import axios from 'axios';
 import swAlert from '@sweetalert/with-react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
+
+// Componentes
+import Button from 'react-bootstrap/Button';
 
 const Loguin = () => {
 
     const navigate = useNavigate()
+    const token = localStorage.getItem('token')
 
     const submitHandler = (e) => {
 
@@ -43,22 +50,28 @@ const Loguin = () => {
 
     return (
         <>
-            <h2>Formulario de loguin</h2>
-            <form onSubmit={submitHandler}>
-                <label>
-                    <span>Usuario: </span>
-                    <br/>
-                    <input type="email" placeholder="Ingresa tu email" name="email" />
-                </label>
-                <br/>
-                <label>
-                    <span>Contraseña: </span>
-                    <br/>
-                    <input type="password" placeholder="Ingresa tu contraseña" name="password" />
-                </label>
-                <br/>
-                <button type="submit">Iniciar sesión</button>
-            </form>
+            {token ?
+                <Navigate to="/listado" replace />
+                :
+                <>
+                    <h2>Formulario de login</h2>
+                    <form onSubmit={submitHandler}>
+                        <label>
+                            <span>Usuario: </span>
+                            <br />
+                            <input type="email" placeholder="Ingresa tu email" name="email" />
+                        </label>
+                        <br />
+                        <label>
+                            <span>Contraseña: </span>
+                            <br />
+                            <input type="password" placeholder="Ingresa tu contraseña" name="password" />
+                        </label>
+                        <br />
+                        <Button type="submit" variant='success'>Iniciar sesión</Button>
+                    </form>
+                </>
+            }
         </>
     )
 }
