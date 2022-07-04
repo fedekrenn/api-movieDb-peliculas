@@ -1,0 +1,12 @@
+.buscador-peliculas .buscador-peliculas__btn{
+    padding: 3px;
+}
+
+.buscador-peliculas__label{
+    display: flex;
+    flex-direction: row;
+}
+
+.buscador-peliculas__label button{
+    margin-left: 5px;
+}

@@ -10,8 +10,8 @@ const Detalle = () => {
 
     let token = sessionStorage.getItem('token')
     const { id } = useParams();
-    const [movie, setMovie] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [ movie, setMovie ] = useState({});
+    const [ loading, setLoading ] = useState(true);
 
     const { title, backdrop_path, overview, genres, release_date } = movie;
 

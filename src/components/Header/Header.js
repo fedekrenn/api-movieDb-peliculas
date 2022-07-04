@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Buscador from '../Buscador/Buscador';
 
 const Header = () => {
 
@@ -21,6 +22,7 @@ const Header = () => {
                         <Navbar.Text className='anchor-navbar'><Link to={'/'}>Home</Link></Navbar.Text>
                         <Navbar.Text className='anchor-navbar'><Link to={'/listado'}>Listado</Link></Navbar.Text>
                     </Nav>
+                    <Buscador />
                 </Navbar.Collapse>
             </Container>
         </Navbar>
