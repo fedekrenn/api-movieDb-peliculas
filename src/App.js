@@ -10,6 +10,7 @@ import Loguin from "./components/Login/Login";
 import Listado from "./components/Listado/Listado";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import Detalle from './components/Detalle/Detalle';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Loguin />} />
           <Route path="/listado" element={<Listado />} />
+          <Route path="/detalle/:id" element={<Detalle />} />
         </Routes>
       </main>
       <Footer />

@@ -3,7 +3,7 @@ import './Login.css'
 
 // Librerías
 import axios from 'axios';
-import swAlert from '@sweetalert/with-react'
+import swAlert from '@sweetalert/with-react';
 import { useNavigate, Navigate } from 'react-router-dom';
 
 // Componentes
@@ -12,7 +12,7 @@ import Button from 'react-bootstrap/Button';
 const Loguin = () => {
 
     const navigate = useNavigate()
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
 
     const submitHandler = (e) => {
 
@@ -43,7 +43,7 @@ const Loguin = () => {
             .then(res => {
                 swAlert(<h2>Estás logueado correctamente!</h2>);
                 const tokenRecibido = res.data.token;
-                localStorage.setItem('token', tokenRecibido);
+                sessionStorage.setItem('token', tokenRecibido);
                 navigate('/listado')
             })
     }

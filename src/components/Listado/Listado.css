@@ -1,3 +1,24 @@
-.listado .card{
+.card{
     width: 18rem;
+}
+
+.total-peliculas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.img-detail{
+    max-height: 400px;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-body .h5{
+    text-align: center;
 }
