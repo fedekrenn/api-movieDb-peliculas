@@ -37,9 +37,8 @@ const Loguin = () => {
             return
         }
 
-        console.log("Login correcto")
         axios
-            .post('http://challenge-react.alkemy.org', { email, password })
+            .post('http://challenge-react.alkemy.org/', { email, password })
             .then(res => {
                 swAlert(<h2>Estás logueado correctamente!</h2>);
                 const tokenRecibido = res.data.token;

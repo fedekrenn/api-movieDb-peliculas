@@ -1,14 +1,26 @@
 import './Buscador.css';
 import Button from 'react-bootstrap/Button';
 import swAlert from '@sweetalert/with-react';
+import { useNavigate } from 'react-router-dom';
 
 const Buscador = () => {
 
+    const navigate = useNavigate();
+
     const submitHandler = (e) => {
+
         e.preventDefault();
-        const keyword = e.currentTarget.keyword.value;
-        keyword === "" && swAlert(<h2>El campo no puede estar vacío</h2>);
-        console.log(keyword);
+
+        const keyword = e.currentTarget.keyword.value.trim();
+
+        if (keyword === "") {
+            swAlert(<h2>El campo no puede estar vacío</h2>);
+        } else if (keyword.length < 4) {
+            swAlert(<h2>El campo debe tener al menos 4 caracteres</h2>);
+        } else {
+            e.currentTarget.keyword.value = "";
+            navigate(`resultados/${keyword}` );
+        }
     }
 
     return (
