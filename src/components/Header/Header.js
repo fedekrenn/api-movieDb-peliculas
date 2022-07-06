@@ -10,7 +10,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Buscador from '../Buscador/Buscador';
 
-const Header = () => {
+const Header = ({ favorites }) => {
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -21,6 +21,12 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Navbar.Text className='anchor-navbar'><Link to={'/'}>Home</Link></Navbar.Text>
                         <Navbar.Text className='anchor-navbar'><Link to={'/listado'}>Listado</Link></Navbar.Text>
+                        <Navbar.Text className='anchor-navbar'>
+                            <Link to={'/favoritos'}>
+                                Favoritos 
+                                {favorites.length > 0 && <sup> {favorites.length}</sup>}
+                            </Link>
+                        </Navbar.Text>
                     </Nav>
                     <Buscador />
                 </Navbar.Collapse>

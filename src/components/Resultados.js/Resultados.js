@@ -7,7 +7,7 @@ import axios from 'axios';
 import swAlert from '@sweetalert/with-react';
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
-const Resultados = () => {
+const Resultados = ({ addOrRemoveFavorite }) => {
 
     const { keyword } = useParams();
     const [moviesResult, setMoviesResult] = useState([]);
@@ -48,12 +48,23 @@ const Resultados = () => {
                     <section className="total-peliculas">
                         {moviesResult.length === 0 && <h4>No se encontraron resultados</h4>}
                         {moviesResult.map((movie, i) => {
-                            const { title, poster_path, id } = movie;
+                            const { title, poster_path, overview ,id } = movie;
                             return (
                                 <Card key={i} className='peliculas-detalle'>
                                     <Card.Img className='img-detail' variant="top" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} />
+                                    <Button
+                                        className='favorite-btn'
+                                        onClick={addOrRemoveFavorite}
+                                        data-movie-id={movie.id}
+                                    >❤️</Button>
+                                    <Button
+                                        className='favorite-btn'
+                                        onClick={addOrRemoveFavorite}
+                                        data-movie-id={movie.id}
+                                    >🖤</Button>
                                     <Card.Body>
                                         <Card.Title>{title}</Card.Title>
+                                        <Card.Text>{overview.substring(0, 75)}...</Card.Text>
                                         <Link to={`/detalle/${id}`}><Button variant="primary">Detalle de película</Button></Link>
                                     </Card.Body>
                                 </Card>

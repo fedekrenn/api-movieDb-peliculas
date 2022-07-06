@@ -1,24 +1,38 @@
-.card{
+.card {
     width: 18rem;
 }
 
-.total-peliculas{
+.total-peliculas {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.img-detail{
+.img-detail {
     max-height: 400px;
 }
 
-.card-body{
+.card-body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
 
-.card-body .h5{
+.card-body .h5 {
     text-align: center;
+}
+
+.favorite-btn {
+    width: 30px;
+    height: 30px;
+    background-color: #f2f2f2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
 }

@@ -12,7 +12,7 @@ import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
 
 
-const Listado = () => {
+const Listado = ({ addOrRemoveFavorite }) => {
 
     let token = sessionStorage.getItem('token')
     const [moviesList, setMoviesList] = useState([]);
@@ -48,6 +48,16 @@ const Listado = () => {
                             return (
                                 <Card key={i} className='peliculas-detalle'>
                                     <Card.Img className='img-detail' variant="top" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} />
+                                    <Button
+                                        className='favorite-btn'
+                                        onClick={addOrRemoveFavorite}
+                                        data-movie-id={movie.id}
+                                    >❤️</Button>
+                                    <Button
+                                        className='favorite-btn'
+                                        onClick={addOrRemoveFavorite}
+                                        data-movie-id={movie.id}
+                                    >🖤</Button>
                                     <Card.Body>
                                         <Card.Title>{title}</Card.Title>
                                         <Card.Text>{overview.substring(0, 200)}...</Card.Text>
