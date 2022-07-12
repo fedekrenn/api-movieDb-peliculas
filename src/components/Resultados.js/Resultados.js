@@ -21,9 +21,10 @@ const Resultados = ({ addOrRemoveFavorite }) => {
             .get(`https://api.themoviedb.org/3/search/movie?api_key=d492a22487e205c56d74c2e5d17a5013&language=es-ES&query=${keyword}`)
             .then(res => {
                 const moviesArray = res.data.results;
-
                 moviesArray.length === 0 && swAlert(<h5>No se encontraron resultados</h5>);
-                setMoviesResult(moviesArray);
+                const noImageFilter = moviesArray.filter(movie => movie.poster_path !== null);
+
+                setMoviesResult(noImageFilter);
                 setLoading(false);
             })
             .catch(err => console.log(err))

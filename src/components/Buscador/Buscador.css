@@ -1,5 +1,7 @@
 .buscador-peliculas .buscador-peliculas__btn{
     padding: 3px;
+    background-color: #be0a0a;
+    border: 1px solid #be0a0a;
 }
 
 .buscador-peliculas__label{

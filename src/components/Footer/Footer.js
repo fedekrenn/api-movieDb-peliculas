@@ -1,17 +1,19 @@
 import './Footer.css'
+import { FaFacebook, FaMailBulk, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
 
     return (
         <footer className="footer">
             <nav>
-                <ul>
-                    <li><a href="/#" rel="noopener noreferrer">Instagram</a></li>
-                    <li><a href="/#" rel="noopener noreferrer">Linkedin</a></li>
-                    <li><a href="/#" rel="noopener noreferrer">Github</a></li>
+                <h3 className="footer-title">Desarrollado por Federico Krenn</h3>
+                <ul className='contact__icons'>
+                    <li><a href='https://www.facebook.com/kempeess' target='_blank' rel='noreferrer'><FaFacebook /></a></li>
+                    <li><a href='mailto:fedekrenn@gmail.com' target='_blank' rel='noreferrer'><FaMailBulk /></a></li>
+                    <li><a href='https://github.com/fedekrenn' target='_blank' rel='noreferrer'><FaGithub /></a></li>
+                    <li><a href='https://www.linkedin.com/in/fkrenn/' target='_blank' rel='noreferrer'><FaLinkedin /></a></li>
                 </ul>
             </nav>
-            <p>Copyright Alkemy Challenge</p>
         </footer>
     )
 }

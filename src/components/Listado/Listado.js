@@ -41,7 +41,7 @@ const Listado = ({ addOrRemoveFavorite }) => {
                 <LoaderSpinner />
                 :
                 <>
-                    <h3>Las mejores películas</h3>
+                    <h2>Las mejores películas</h2>
                     <section className="total-peliculas">
                         {moviesList.map((movie, i) => {
                             const { title, overview, poster_path, id } = movie;

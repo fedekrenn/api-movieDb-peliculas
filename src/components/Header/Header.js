@@ -19,7 +19,6 @@ const Header = ({ favorites }) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Navbar.Text className='anchor-navbar'><Link to={'/'}>Home</Link></Navbar.Text>
                         <Navbar.Text className='anchor-navbar'><Link to={'/listado'}>Listado</Link></Navbar.Text>
                         <Navbar.Text className='anchor-navbar'>
                             <Link to={'/favoritos'}>

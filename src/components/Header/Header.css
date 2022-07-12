@@ -3,6 +3,17 @@
 }
 
 sup{
-    color: #296ed4;
+    color: #be0a0a;
     font-weight: bold;
+}
+
+span.navbar-brand{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #be0a0a;
+    transition: .5s;
+}
+
+span.navbar-brand:hover{
+    color: #c03737;
 }

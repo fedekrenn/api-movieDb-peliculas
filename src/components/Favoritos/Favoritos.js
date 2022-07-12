@@ -12,7 +12,7 @@ const Favoritos = ({ addOrRemoveFavorite, favorites }) => {
             <Navigate to="/" replace />
             :
             <>
-                {favorites.length === 0 ? <h3>Agrega tus películas favoritas!</h3> : <h3>Las mejores películas</h3>}
+                {favorites.length === 0 ? <h2>Agrega tus películas favoritas!</h2> : <h2>Tus películas preferidas</h2>}
                 <section className="total-peliculas">
                     {favorites.map((movie, i) => {
                         const { title, overview, imgURL, id } = movie;

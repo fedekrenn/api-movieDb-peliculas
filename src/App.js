@@ -45,8 +45,6 @@ function App() {
       id
     }
 
-    console.log(btn.classList)
-
 
     const isInArray = favMovies.find(oneMovie => oneMovie.id === movieData.id)
 
