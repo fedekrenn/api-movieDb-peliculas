@@ -9,7 +9,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 // Componentes
 import Button from 'react-bootstrap/Button';
 
-const Loguin = () => {
+const Loguin = ({setBackground}) => {
 
     const navigate = useNavigate()
     const token = sessionStorage.getItem('token')
@@ -40,10 +40,11 @@ const Loguin = () => {
         axios
             .post('http://challenge-react.alkemy.org/', { email, password })
             .then(res => {
-                swAlert(<h2>Estás logueado correctamente!</h2>);
+                swAlert(<h2>Te logueaste correctamente!</h2>);
                 const tokenRecibido = res.data.token;
                 sessionStorage.setItem('token', tokenRecibido);
-                navigate('/listado')
+                navigate('/listado');
+                setBackground();
             })
     }
 

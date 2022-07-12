@@ -65,12 +65,19 @@ function App() {
 
   }
 
+  const setBackground = () => {
+    
+    const main = document.querySelector('main');
+
+    main.classList.remove('background-img');
+  }
+
   return (
     <>
       <Header favorites={favorites}/>
-      <main>
+      <main className='background-img'>
         <Routes>
-          <Route path="/" element={<Loguin />} />
+          <Route path="/" element={<Loguin setBackground={setBackground}/>} />
           <Route path="/listado" element={<Listado addOrRemoveFavorite={addOrRemoveFavorite} />} />
           <Route path="/detalle/:id" element={<Detalle />} />
           <Route path="/resultados/:keyword" element={<Resultados addOrRemoveFavorite={addOrRemoveFavorite} />} />

@@ -8,7 +8,8 @@
 }
 
 body{
-    background-color: rgb(20, 15, 14);
+    background: linear-gradient(180deg, #140f0e 0%, #500505 50%);
+
 }
 
 main{
@@ -20,6 +21,10 @@ main{
     justify-content: center;
     align-items: center;
 }
+
+/* main.background-img{
+    background: url("../public/assets/img/background.jpg");
+} */
 
 a{
     text-decoration: none;
@@ -52,4 +57,8 @@ button.btn:hover{
     background-color: #c03737;
     border: 1px solid #c03737;
     transition: .4s;
+}
+
+.swal-modal h2, .swal-modal h3{
+    color: black;
 }
