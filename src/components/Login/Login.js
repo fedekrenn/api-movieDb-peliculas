@@ -3,13 +3,13 @@ import './Login.css'
 
 // Librerías
 import axios from 'axios';
-import swAlert from '@sweetalert/with-react';
+import Swal from 'sweetalert2'
 import { useNavigate, Navigate } from 'react-router-dom';
 
 // Componentes
 import Button from 'react-bootstrap/Button';
 
-const Loguin = ({setBackground}) => {
+const Loguin = ({ setBackground }) => {
 
     const navigate = useNavigate()
     const token = sessionStorage.getItem('token')
@@ -23,24 +23,53 @@ const Loguin = ({setBackground}) => {
         const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (email === "" || password === "") {
-            swAlert(<h2>Los campos no pueden estar vacíos</h2>);
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Los campos no pueden estar vacíos',
+              })
             return
         }
 
         if (!regexEmail.test(email) && email !== "") {
-            swAlert(<h2>Debes escribir una direccion de correo electrónica válida</h2>);
+            Swal.fire({
+                icon: 'warning',
+                title: 'Revisa tu correo electrónico',
+                text: 'El email ingresado debe corresponder a un formato válido de correo electrónico',
+              })
             return
         }
 
         if (email !== 'challenge@alkemy.org' || password !== 'react') {
-            swAlert(<h2>Usuario o contraseña incorrectos</h2>);
+            Swal.fire({
+                icon: 'error',
+                title: 'Revisa tus credenciales',
+                text: 'El email o la contraseña son incorrectos',
+              })
             return
         }
 
         axios
             .post('http://challenge-react.alkemy.org/', { email, password })
             .then(res => {
-                swAlert(<h2>Te logueaste correctamente!</h2>);
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Iniciaste sesión correctamente!'
+                })
+
                 const tokenRecibido = res.data.token;
                 sessionStorage.setItem('token', tokenRecibido);
                 navigate('/listado');

@@ -1,6 +1,9 @@
+// Sass
 import './Buscador.css';
+// Librerías
+import Swal from 'sweetalert2'
 import Button from 'react-bootstrap/Button';
-import swAlert from '@sweetalert/with-react';
+// React
 import { useNavigate } from 'react-router-dom';
 
 const Buscador = () => {
@@ -14,12 +17,20 @@ const Buscador = () => {
         const keyword = e.currentTarget.keyword.value.trim();
 
         if (keyword === "") {
-            swAlert(<h2>El campo no puede estar vacío</h2>);
+            Swal.fire({
+                icon: 'warning',
+                title: 'Escribe el nombre de una película',
+                text: 'El campo no puede estar vacío',
+            })
         } else if (keyword.length < 4) {
-            swAlert(<h2>El campo debe tener al menos 4 caracteres</h2>);
+            Swal.fire({
+                icon: 'warning',
+                title: 'Frase demasiado corta',
+                text: 'Debes escribir por lo menos 4 caracteres',
+            })
         } else {
             e.currentTarget.keyword.value = "";
-            navigate(`resultados/${keyword}` );
+            navigate(`resultados/${keyword}`);
         }
     }
 
