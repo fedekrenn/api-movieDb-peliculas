@@ -1,6 +1,6 @@
 // Estilo
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './App.scss';
 
 // Librerías
 import { Routes, Route } from "react-router-dom";

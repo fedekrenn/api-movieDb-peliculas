@@ -1,4 +1,3 @@
-import './Resultados.css';
 import { useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';

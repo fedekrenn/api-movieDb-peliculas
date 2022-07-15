@@ -12,8 +12,7 @@ span.navbar-brand{
     font-weight: bold;
     color: #be0a0a;
     transition: .5s;
-}
-
-span.navbar-brand:hover{
-    color: #c03737;
+    &:hover{
+        color: #c03737;
+    }
 }

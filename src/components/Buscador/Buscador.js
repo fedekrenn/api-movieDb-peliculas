@@ -1,5 +1,3 @@
-// Sass
-import './Buscador.css';
 // Librerías
 import Swal from 'sweetalert2'
 import Button from 'react-bootstrap/Button';

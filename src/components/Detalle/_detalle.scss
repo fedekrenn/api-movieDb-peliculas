@@ -1,0 +1,13 @@
+.pelicula-detalle {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    img{
+        margin: 0 auto;
+        display: block;
+    }
+    .overview{
+        margin: 2em 0;
+    }
+}

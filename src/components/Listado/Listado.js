@@ -1,5 +1,3 @@
-// Css
-import './Listado.css'
 // Librerías
 import { Navigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';

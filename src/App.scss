@@ -1,0 +1,16 @@
+// Abstracts
+@use './scss/abstracts/variables';
+@use './scss/abstracts/mixins';
+
+// Base
+@use './scss/base/base';
+@use './scss/base/resets';
+
+// Layout
+@use './components/Buscador/buscador';
+@use './components/Detalle/detalle';
+@use './components/Favoritos/favoritos';
+@use './components/Footer/footer';
+@use './components/Header/header';
+@use './components/Listado/listado';
+@use './components/Resultados.js/resultados';
