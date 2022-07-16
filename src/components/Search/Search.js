@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 // React
 import { useNavigate } from 'react-router-dom';
 
-const Buscador = () => {
+const Search = () => {
 
     const navigate = useNavigate();
 
@@ -33,13 +33,13 @@ const Buscador = () => {
     }
 
     return (
-        <form className='buscador-peliculas' onSubmit={submitHandler}>
-            <label for="buscador" className='buscador-peliculas__label'>
-                <input type="text" id="buscador" name="keyword" placeholder="Buscar película..." />
-                <Button type="submit" variant='primary' className='buscador-peliculas__btn'>Buscar</Button>
+        <form className='search-movies' onSubmit={submitHandler}>
+            <label for="search" className='search-movies__label'>
+                <input type="text" id="search" name="keyword" placeholder="Buscar película..." />
+                <Button type="submit" variant='primary' className='search-movies__btn'>Buscar</Button>
             </label>
         </form>
     )
 }
 
-export default Buscador;
+export default Search;

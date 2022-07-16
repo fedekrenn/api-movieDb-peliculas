@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Buscador from '../Buscador/Buscador';
+import Search from "../Search/Search";
 
 const Header = ({ favorites }) => {
 
@@ -23,7 +23,7 @@ const Header = ({ favorites }) => {
                             </Link>
                         </Navbar.Text>
                     </Nav>
-                    <Buscador />
+                    <Search />
                 </Navbar.Collapse>
             </Container>
         </Navbar>

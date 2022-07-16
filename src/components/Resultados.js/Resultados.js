@@ -22,7 +22,11 @@ const Resultados = ({ addOrRemoveFavorite }) => {
                 const moviesArray = res.data.results;
                 moviesArray.length === 0 && swAlert(<h5>No se encontraron resultados</h5>);
                 const noImageFilter = moviesArray.filter(movie => movie.poster_path !== null);
-
+                
+                // Ordenamos por popularidad
+                noImageFilter.sort((a, b) => b.popularity - a.popularity);
+                
+                // Seteamos
                 setMoviesResult(noImageFilter);
                 setLoading(false);
             })

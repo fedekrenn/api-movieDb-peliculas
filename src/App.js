@@ -11,7 +11,7 @@ import Loguin from "./components/Login/Login";
 import Listado from "./components/Listado/Listado";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Detalle from './components/Detalle/Detalle';
+import Detail from "./components/Detail/Detail";
 import Resultados from './components/Resultados.js/Resultados';
 import Favoritos from './components/Favoritos/Favoritos';
 
@@ -79,7 +79,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Loguin setBackground={setBackground}/>} />
           <Route path="/listado" element={<Listado addOrRemoveFavorite={addOrRemoveFavorite} />} />
-          <Route path="/detalle/:id" element={<Detalle />} />
+          <Route path="/detalle/:id" element={<Detail />} />
           <Route path="/resultados/:keyword" element={<Resultados addOrRemoveFavorite={addOrRemoveFavorite} />} />
           <Route path="/favoritos" element={<Favoritos favorites={favorites} addOrRemoveFavorite={addOrRemoveFavorite} />} />
         </Routes>

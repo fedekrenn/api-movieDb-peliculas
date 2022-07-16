@@ -7,8 +7,8 @@
 @use './scss/base/resets';
 
 // Layout
-@use './components/Buscador/buscador';
-@use './components/Detalle/detalle';
+@use './components/Search/search';
+@use './components/Detail/detail';
 @use './components/Favoritos/favoritos';
 @use './components/Footer/footer';
 @use './components/Header/header';

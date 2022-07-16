@@ -1,5 +1,5 @@
-.pelicula-detalle {
-    color: white;
+.movie-detail {
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -9,5 +9,9 @@
     }
     .overview{
         margin: 2em 0;
+    }
+    iframe{
+        width: 560px;
+        height: 315px;
     }
 }
