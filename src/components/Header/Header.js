@@ -1,13 +1,18 @@
 // Librerías
 import { Link } from "react-router-dom";
+// Context 
+import { useContext } from 'react';
+import FavoriteContext from '../../context/favoriteContext';
 // Componentes
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Search from "../Search/Search";
 
-const Header = ({ favorites }) => {
+const Header = () => {
 
+    const { favorites } = useContext(FavoriteContext);
+    
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>

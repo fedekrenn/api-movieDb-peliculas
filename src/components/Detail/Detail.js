@@ -1,6 +1,7 @@
-const Detail = ({movie, videoData }) => {
+const Detail = ({ movie, videoData }) => {
 
     const { title, backdrop_path, overview, genres, release_date, vote_average } = movie;
+
 
     return (
         <>

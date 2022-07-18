@@ -1,10 +1,30 @@
+// React
+import { useEffect } from 'react';
+// Context 
+import { useContext } from 'react';
+import FavoriteContext from '../../context/favoriteContext';
+// Librerías
 import { Navigate, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-const Favorites = ({ addOrRemoveFavorite, favorites }) => {
 
-    const token = sessionStorage.getItem('token');
+
+const Favorites = () => {
+    
+    const token = sessionStorage.getItem('token'); // Esta está bien
+
+    const {favorites, setFavorites, addOrRemoveFavorite} = useContext(FavoriteContext); // Atr
+
+
+    useEffect(() => {
+
+        const localMovies = JSON.parse(localStorage.getItem('favs'));
+        localMovies !== null && setFavorites(localMovies);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
 
     return (
         !token ?

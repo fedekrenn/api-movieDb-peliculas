@@ -46,10 +46,10 @@ const DetailContainer = () => {
         !token ?
             <Navigate to="/" replace />
             :
-            loading ? 
-            <LoaderSpinner /> 
-            : 
-            <Detail movie={movie} videoData={videoData} />
+            loading ?
+                <LoaderSpinner />
+                :
+                <Detail movie={movie} videoData={videoData} />
     )
 }
 

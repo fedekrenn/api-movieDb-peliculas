@@ -1,3 +1,6 @@
+// Context 
+import { useContext } from 'react';
+import FavoriteContext from '../../context/favoriteContext';
 // Librerías
 import { Navigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -10,7 +13,9 @@ import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
 
 
-const MovieList = ({ addOrRemoveFavorite }) => {
+const MovieList = () => {
+
+    const { addOrRemoveFavorite } = useContext(FavoriteContext); 
 
     let token = sessionStorage.getItem('token')
     const [moviesList, setMoviesList] = useState([]);

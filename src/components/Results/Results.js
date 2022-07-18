@@ -1,12 +1,20 @@
+// REact
 import { useEffect, useState } from 'react';
+// Context 
+import { useContext } from 'react';
+import FavoriteContext from '../../context/favoriteContext';
+// Librerías
 import { useParams, Link, Navigate } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+// Componentes
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
-const Results = ({ addOrRemoveFavorite }) => {
+const Results = () => {
+
+    const { addOrRemoveFavorite } = useContext(FavoriteContext); // Atr
 
     const { keyword } = useParams();
     const [moviesResult, setMoviesResult] = useState([]);
