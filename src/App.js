@@ -8,12 +8,12 @@ import { useState, useEffect } from 'react';
 
 // Componentes
 import Loguin from "./components/Login/Login";
-import Listado from "./components/Listado/Listado";
+import MovieList from "./components/MovieList/MovieList";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Detail from "./components/Detail/Detail";
-import Resultados from './components/Resultados.js/Resultados';
-import Favoritos from './components/Favoritos/Favoritos';
+import Resultados from './components/Results/Results';
+import Favorites from './components/Favorites/Favorites';
 
 function App() {
 
@@ -78,10 +78,10 @@ function App() {
       <main className='background-img'>
         <Routes>
           <Route path="/" element={<Loguin setBackground={setBackground}/>} />
-          <Route path="/listado" element={<Listado addOrRemoveFavorite={addOrRemoveFavorite} />} />
+          <Route path="/listado" element={<MovieList addOrRemoveFavorite={addOrRemoveFavorite} />} />
           <Route path="/detalle/:id" element={<Detail />} />
           <Route path="/resultados/:keyword" element={<Resultados addOrRemoveFavorite={addOrRemoveFavorite} />} />
-          <Route path="/favoritos" element={<Favoritos favorites={favorites} addOrRemoveFavorite={addOrRemoveFavorite} />} />
+          <Route path="/favoritos" element={<Favorites favorites={favorites} addOrRemoveFavorite={addOrRemoveFavorite} />} />
         </Routes>
       </main>
       <Footer />

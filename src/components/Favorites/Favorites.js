@@ -2,7 +2,7 @@ import { Navigate, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-const Favoritos = ({ addOrRemoveFavorite, favorites }) => {
+const Favorites = ({ addOrRemoveFavorite, favorites }) => {
 
     const token = sessionStorage.getItem('token');
 
@@ -12,11 +12,11 @@ const Favoritos = ({ addOrRemoveFavorite, favorites }) => {
             :
             <>
                 {favorites.length === 0 ? <h2>Agrega tus películas favoritas!</h2> : <h2>Tus películas preferidas</h2>}
-                <section className="total-peliculas">
+                <section className="total-movies">
                     {favorites.map((movie, i) => {
                         const { title, overview, imgURL, id } = movie;
                         return (
-                            <Card key={i} className='peliculas-detalle'>
+                            <Card key={i} className='movie-detail'>
                                 <Card.Img className='img-detail' variant="top" src={`${imgURL}`} />
                                 <Button
                                     className='favorite-btn'
@@ -26,7 +26,9 @@ const Favoritos = ({ addOrRemoveFavorite, favorites }) => {
                                 <Card.Body>
                                     <Card.Title>{title}</Card.Title>
                                     <Card.Text>{overview.substring(0, 200)}...</Card.Text>
-                                    <Link to={`/detalle/${id}`}><Button variant="primary">Detalle de película</Button></Link>
+                                    <Link to={`/detalle/${id}`}>
+                                        <Button variant="primary">Detalle de película</Button>
+                                    </Link>
                                 </Card.Body>
                             </Card>
                         )
@@ -37,4 +39,4 @@ const Favoritos = ({ addOrRemoveFavorite, favorites }) => {
     )
 }
 
-export default Favoritos;
+export default Favorites;

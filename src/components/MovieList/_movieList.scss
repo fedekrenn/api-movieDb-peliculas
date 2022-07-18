@@ -1,9 +1,12 @@
 .card {
     width: 18rem;
     margin: 2em 0;
+    p{
+        color: black;
+    }
 }
 
-.total-peliculas {
+.total-movies {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -21,6 +24,7 @@
     justify-content: space-between;
     .h5{
         text-align: center;
+        color: black;
     }
 }
 
@@ -36,9 +40,4 @@ button.favorite-btn {
     right: 10px;
     top: 10px;
     border: none;
-}
-
-h2{
-    font-size: 3em;
-    margin: 1em;
 }

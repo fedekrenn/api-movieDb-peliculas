@@ -11,10 +11,19 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    h1, h2, h3, h4 {
+
+    h1,
+    h2,
+    h3,
+    h4 {
         margin: 28px 0;
         color: white;
         font-family: var(--title-font);
+    }
+
+    h2 {
+        font-size: 3em;
+        margin: 1em;
     }
 }
 
@@ -27,19 +36,20 @@ body {
 }
 
 .swal-modal {
-    h2, h3{
+
+    h2,
+    h3 {
         color: black;
     }
-} 
+}
 
-button.btn{
+button.btn {
     background-color: #be0a0a;
     border: 1px solid #be0a0a;
-    &:hover{
+
+    &:hover {
         background-color: #c03737;
         border: 1px solid #c03737;
         transition: .4s;
     }
 }
-
-

@@ -9,8 +9,8 @@
 // Layout
 @use './components/Search/search';
 @use './components/Detail/detail';
-@use './components/Favoritos/favoritos';
+@use './components/Favorites/favorites';
 @use './components/Footer/footer';
 @use './components/Header/header';
-@use './components/Listado/listado';
-@use './components/Resultados.js/resultados';
+@use './components/MovieList/movieList';
+@use './components/Results/results';
