@@ -1,19 +1,20 @@
-// Estilo
+// Estilos
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
-
+// React
+import { useState, useEffect } from 'react';
 // Librerías
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect } from 'react';
-
 // Componentes
 import Loguin from "./components/Login/Login";
 import MovieList from "./components/MovieList/MovieList";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Detail from "./components/Detail/Detail";
-import Resultados from './components/Results/Results';
+import Detail from "./components/DetailContainer/DetailContainer";
+import Results from './components/Results/Results';
 import Favorites from './components/Favorites/Favorites';
+
+
 
 function App() {
 
@@ -80,7 +81,7 @@ function App() {
           <Route path="/" element={<Loguin setBackground={setBackground}/>} />
           <Route path="/listado" element={<MovieList addOrRemoveFavorite={addOrRemoveFavorite} />} />
           <Route path="/detalle/:id" element={<Detail />} />
-          <Route path="/resultados/:keyword" element={<Resultados addOrRemoveFavorite={addOrRemoveFavorite} />} />
+          <Route path="/resultados/:keyword" element={<Results addOrRemoveFavorite={addOrRemoveFavorite} />} />
           <Route path="/favoritos" element={<Favorites favorites={favorites} addOrRemoveFavorite={addOrRemoveFavorite} />} />
         </Routes>
       </main>
