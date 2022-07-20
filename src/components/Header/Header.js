@@ -7,7 +7,7 @@ import FavoriteContext from '../../context/favoriteContext';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Search from "../Search/Search";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Header = () => {
 
@@ -28,7 +28,7 @@ const Header = () => {
                             </Link>
                         </Navbar.Text>
                     </Nav>
-                    <Search />
+                    <SearchBar />
                 </Navbar.Collapse>
             </Container>
         </Navbar>

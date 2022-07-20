@@ -16,19 +16,12 @@ import Favorites from './components/Favorites/Favorites';
 
 function App() {
 
-  const setBackground = () => {
-
-    const main = document.querySelector('main');
-
-    main.classList.remove('background-img');
-  }
-
   return (
     <>
       <Header />
       <main className='background-img'>
         <Routes>
-          <Route path="/" element={<Loguin setBackground={setBackground} />} />
+          <Route path="/" element={<Loguin />} />
           <Route path="/listado" element={<MovieList />} />
           <Route path="/detalle/:id" element={<Detail />} />
           <Route path="/resultados/:keyword" element={<Results />} />

@@ -49,10 +49,18 @@ const FavoriteProvider = ({ children }) => {
         }
     }
 
+    const setBackground = () => {
+
+        const main = document.querySelector('main');
+    
+        main.classList.remove('background-img');
+      }
+
     const data = {
         favorites,
         setFavorites,
-        addOrRemoveFavorite
+        addOrRemoveFavorite,
+        setBackground
     }
 
     return (

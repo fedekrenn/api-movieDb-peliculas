@@ -1,14 +1,15 @@
+// React
+import { useEffect, useState } from 'react';
 // Context 
 import { useContext } from 'react';
 import FavoriteContext from '../../context/favoriteContext';
 // Librerías
 import { Navigate, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
-// Componentes
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+// Componentes
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
 

@@ -2,9 +2,9 @@
 import axios from 'axios';
 import Swal from 'sweetalert2'
 import { useNavigate, Navigate } from 'react-router-dom';
-
 // Componentes
 import Button from 'react-bootstrap/Button';
+
 
 const Loguin = ({ setBackground }) => {
 
@@ -70,7 +70,6 @@ const Loguin = ({ setBackground }) => {
                 const tokenRecibido = res.data.token;
                 sessionStorage.setItem('token', tokenRecibido);
                 navigate('/listado');
-                setBackground();
             })
     }
 

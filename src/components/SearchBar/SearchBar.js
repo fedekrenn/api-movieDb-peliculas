@@ -1,10 +1,12 @@
+// React
+import { useNavigate } from 'react-router-dom';
 // Librerías
 import Swal from 'sweetalert2'
 import Button from 'react-bootstrap/Button';
-// React
-import { useNavigate } from 'react-router-dom';
 
-const Search = () => {
+
+
+const SearchBar = () => {
 
     const navigate = useNavigate();
 
@@ -42,4 +44,4 @@ const Search = () => {
     )
 }
 
-export default Search;
+export default SearchBar;

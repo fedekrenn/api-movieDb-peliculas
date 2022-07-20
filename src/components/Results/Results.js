@@ -1,4 +1,4 @@
-// REact
+// React
 import { useEffect, useState } from 'react';
 // Context 
 import { useContext } from 'react';
