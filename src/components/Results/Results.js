@@ -1,20 +1,14 @@
 // React
 import { useEffect, useState } from 'react';
-// Context 
-import { useContext } from 'react';
-import FavoriteContext from '../../context/favoriteContext';
 // Librerías
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2'
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 // Componentes
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
+import MovieCard from '../MovieCard/MovieCard';
 
 const Results = () => {
-
-    const { addOrRemoveFavorite } = useContext(FavoriteContext); // Atr
 
     const { keyword } = useParams();
     const [moviesResult, setMoviesResult] = useState([]);
@@ -32,14 +26,14 @@ const Results = () => {
                     icon: 'warning',
                     title: 'Prueba de nuevo',
                     text: 'No se encontraron resultados',
-                  });
+                });
 
                 // Filtramos las que no tienen imagen de poster, para descartarlas
                 const noImageFilter = moviesArray.filter(movie => movie.poster_path !== null);
-                
+
                 // Ordenamos por popularidad
                 noImageFilter.sort((a, b) => b.popularity - a.popularity);
-                
+
                 // Seteamos
                 setMoviesResult(noImageFilter);
                 setLoading(false);
@@ -65,29 +59,7 @@ const Results = () => {
                     <h2>Resultados de la búsqueda de: {keyword}</h2>
                     <section className="total-movies">
                         {moviesResult.length === 0 && <h4>No se encontraron resultados</h4>}
-                        {moviesResult.map((movie, i) => {
-                            const { title, poster_path, overview ,id } = movie;
-                            return (
-                                <Card key={i} className='movie-detail'>
-                                    <Card.Img className='img-detail' variant="top" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} />
-                                    <Button
-                                        className='favorite-btn'
-                                        onClick={addOrRemoveFavorite}
-                                        data-movie-id={movie.id}
-                                    >❤️</Button>
-                                    <Button
-                                        className='favorite-btn'
-                                        onClick={addOrRemoveFavorite}
-                                        data-movie-id={movie.id}
-                                    >🖤</Button>
-                                    <Card.Body>
-                                        <Card.Title>{title}</Card.Title>
-                                        <Card.Text>{overview.substring(0, 75)}...</Card.Text>
-                                        <Link to={`/detalle/${id}`}><Button variant="primary">Detalle de película</Button></Link>
-                                    </Card.Body>
-                                </Card>
-                            )
-                        })}
+                        {moviesResult.map((movie, i) => <MovieCard key={i} movie={movie} />)}
                     </section>
                 </>
     )

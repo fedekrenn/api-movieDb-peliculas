@@ -1,22 +1,16 @@
 // React
 import { useEffect, useState } from 'react';
-// Context 
-import { useContext } from 'react';
-import FavoriteContext from '../../context/favoriteContext';
 // Librerías
-import { Navigate, Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import axios from 'axios';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 // Componentes
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
+import MovieCard from '../MovieCard/MovieCard';
 
 
 
 const MovieList = () => {
-
-    const { addOrRemoveFavorite } = useContext(FavoriteContext); 
 
     let token = sessionStorage.getItem('token')
     const [moviesList, setMoviesList] = useState([]);
@@ -35,7 +29,7 @@ const MovieList = () => {
                     icon: 'error',
                     title: 'Error de conexión',
                     text: 'Error al conectar con la API',
-                  })
+                })
             })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,29 +45,7 @@ const MovieList = () => {
                 <>
                     <h2>Las mejores películas</h2>
                     <section className="total-movies">
-                        {moviesList.map((movie, i) => {
-                            const { title, overview, poster_path, id } = movie;
-                            return (
-                                <Card key={i} className='movie-detail'>
-                                    <Card.Img className='img-detail' variant="top" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} />
-                                    <Button
-                                        className='favorite-btn'
-                                        onClick={addOrRemoveFavorite}
-                                        data-movie-id={movie.id}
-                                    >❤️</Button>
-                                    <Button
-                                        className='favorite-btn'
-                                        onClick={addOrRemoveFavorite}
-                                        data-movie-id={movie.id}
-                                    >🖤</Button>
-                                    <Card.Body>
-                                        <Card.Title>{title}</Card.Title>
-                                        <Card.Text>{overview.substring(0, 200)}...</Card.Text>
-                                        <Link to={`/detalle/${id}`}><Button variant="primary">Detalle de película</Button></Link>
-                                    </Card.Body>
-                                </Card>
-                            )
-                        })}
+                        {moviesList.map((movie, i) => <MovieCard key={i} movie={movie} />)}
                     </section>
                 </>
     )
