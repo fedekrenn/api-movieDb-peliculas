@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // Context 
 import { useContext } from 'react';
 import FavoriteContext from '../../context/favoriteContext';
+import LoguinContext from "../../context/loguinContext";
 // Componentes
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -10,8 +11,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import SearchBar from "../SearchBar/SearchBar";
 
 const Header = () => {
-
+    
     const { favorites } = useContext(FavoriteContext);
+    const { login, setLogin } = useContext(LoguinContext);
+
+    const token = sessionStorage.getItem('token');
+    token && setLogin(true);
     
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -23,12 +28,12 @@ const Header = () => {
                         <Navbar.Text className='anchor-navbar'><Link to={'/listado'}>Listado</Link></Navbar.Text>
                         <Navbar.Text className='anchor-navbar'>
                             <Link to={'/favoritos'}>
-                                Favoritos 
+                                Favoritos
                                 {favorites.length > 0 && <sup> {favorites.length}</sup>}
                             </Link>
                         </Navbar.Text>
                     </Nav>
-                    <SearchBar />
+                    {login && <SearchBar />}
                 </Navbar.Collapse>
             </Container>
         </Navbar>

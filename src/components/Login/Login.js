@@ -2,14 +2,22 @@
 import axios from 'axios';
 import Swal from 'sweetalert2'
 import { useNavigate, Navigate } from 'react-router-dom';
+// Context
+import { useContext } from 'react';
+import LoguinContext from '../../context/loguinContext';
+
 // Componentes
 import Button from 'react-bootstrap/Button';
 
 
-const Loguin = ({ setBackground }) => {
+
+const Loguin = () => {
+    
+    const { setLogin } = useContext(LoguinContext);
 
     const navigate = useNavigate()
     const token = sessionStorage.getItem('token')
+
 
     const submitHandler = (e) => {
 
@@ -67,6 +75,7 @@ const Loguin = ({ setBackground }) => {
                     title: 'Iniciaste sesión correctamente!'
                 })
 
+                setLogin(true);
                 const tokenRecibido = res.data.token;
                 sessionStorage.setItem('token', tokenRecibido);
                 navigate('/listado');

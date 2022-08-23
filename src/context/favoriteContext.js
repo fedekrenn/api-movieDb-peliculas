@@ -1,12 +1,7 @@
 // React
 import { createContext, useState } from "react";
-
-
-
 // Creación del contexto
 const FavoriteContext = createContext();
-
-
 
 const FavoriteProvider = ({ children }) => {
 

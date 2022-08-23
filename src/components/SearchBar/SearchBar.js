@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import Button from 'react-bootstrap/Button';
 
-
-
 const SearchBar = () => {
 
     const navigate = useNavigate();
