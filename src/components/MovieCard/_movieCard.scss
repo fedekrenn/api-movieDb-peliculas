@@ -1,0 +1,17 @@
+button.favorite-btn {
+    width: 30px;
+    height: 30px;
+    background-color: #f2f2f2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+}
+
+.marked{
+    z-index: 100;
+}

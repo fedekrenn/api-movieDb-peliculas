@@ -1,7 +1,7 @@
 // Librerías
 import { Link } from "react-router-dom";
 // Context 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import FavoriteContext from '../../context/favoriteContext';
 import LoguinContext from "../../context/loguinContext";
 // Componentes
@@ -16,7 +16,13 @@ const Header = () => {
     const { login, setLogin } = useContext(LoguinContext);
 
     const token = sessionStorage.getItem('token');
-    token && setLogin(true);
+
+    useEffect(() => {
+
+        token && setLogin(true);
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    } , []);
     
     return (
         <Navbar bg="dark" variant="dark" expand="lg">

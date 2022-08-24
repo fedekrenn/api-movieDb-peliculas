@@ -9,21 +9,24 @@ import Button from 'react-bootstrap/Button';
 
 const MovieCard = ({movie}) => {
 
-    const { addOrRemoveFavorite } = useContext(FavoriteContext);
+    const { addOrRemoveFavorite, favorites } = useContext(FavoriteContext);
 
     const { title, overview, poster_path, id } = movie;
+
+    // Saber si la película está en favoritos
+    const isFavorite = favorites.some(fav => fav.id === id);
 
     return (
         <Card className='movie-detail'>
             <Card.Img className='img-detail' variant="top" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} />
             <Button
-                className='favorite-btn'
-                onClick={addOrRemoveFavorite}
+                className={isFavorite ? 'favorite-btn marked' : 'favorite-btn'}
+                onClick={() => addOrRemoveFavorite(movie)}
                 data-movie-id={movie.id}
             >❤️</Button>
             <Button
                 className='favorite-btn'
-                onClick={addOrRemoveFavorite}
+                onClick={() => addOrRemoveFavorite(movie)}
                 data-movie-id={movie.id}
             >🖤</Button>
             <Card.Body>

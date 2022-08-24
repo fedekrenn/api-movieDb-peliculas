@@ -1,5 +1,3 @@
-// React
-import { useEffect } from 'react';
 // Context 
 import { useContext } from 'react';
 import FavoriteContext from '../../context/favoriteContext';
@@ -12,16 +10,7 @@ import MovieCard from '../MovieCard/MovieCard';
 const Favorites = () => {
 
     const token = sessionStorage.getItem('token');
-    const { favorites, setFavorites } = useContext(FavoriteContext);
-
-    useEffect(() => {
-
-        const localMovies = JSON.parse(localStorage.getItem('favs'));
-        localMovies !== null && setFavorites(localMovies);
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
+    const { favorites } = useContext(FavoriteContext);
 
     return (
         !token ?

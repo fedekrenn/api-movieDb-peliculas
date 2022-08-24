@@ -1,5 +1,5 @@
 // React
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 // Creación del contexto
 const FavoriteContext = createContext();
 
@@ -9,36 +9,32 @@ const FavoriteProvider = ({ children }) => {
 
     const favMovies = JSON.parse(localStorage.getItem('favs')) || [];
 
-    const addOrRemoveFavorite = (e) => {
+    useEffect(() => {
 
-        const btn = e.currentTarget;
-        const parent = btn.parentElement;
-        const imgURL = parent.querySelector('img').src;
-        const title = parent.querySelector('.h5').innerText;
-        const overview = parent.querySelector('p').innerText;
-        const id = btn.dataset['movieId'];
+        favMovies !== [] && setFavorites(favMovies);
 
-        const movieData = {
-            title,
-            imgURL,
-            overview,
-            id
-        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
+    const addOrRemoveFavorite = (movie) => {
 
-        const isInArray = favMovies.find(oneMovie => oneMovie.id === movieData.id)
+        // Agregar clase de boton
+        const btn = document.querySelector(`[data-movie-id="${movie.id}"]`);
+        btn.classList.toggle('marked');
+
+        // const btn = Event.currentTarget;
+
+        const isInArray = favMovies.find(oneMovie => oneMovie.id === movie.id)
 
         if (!isInArray) {
-            favMovies.push(movieData)
+            favMovies.push(movie)
             localStorage.setItem('favs', JSON.stringify(favMovies))
             setFavorites(favMovies);
-            btn.classList.toggle('hidden-btn');
         } else {
             // Encuentro el indice y lo elimino del array original
-            const deleteIndex = favMovies.findIndex(movie => movie.id === movieData.id)
+            const deleteIndex = favMovies.findIndex(movieToDelete => movieToDelete.id === movie.id)
             favMovies.splice(deleteIndex, 1)
             setFavorites(favMovies);
-            btn.classList.remove('hidden-btn');
             // Seteo el local
             localStorage.setItem('favs', JSON.stringify(favMovies))
         }
@@ -47,9 +43,9 @@ const FavoriteProvider = ({ children }) => {
     const setBackground = () => {
 
         const main = document.querySelector('main');
-    
+
         main.classList.remove('background-img');
-      }
+    }
 
     const data = {
         favorites,
