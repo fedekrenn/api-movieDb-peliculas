@@ -1,22 +1,35 @@
 // Librerías
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import { useEffect } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 // Context
 import { useContext } from 'react';
 import LoguinContext from '../../context/loguinContext';
-
 // Componentes
 import Button from 'react-bootstrap/Button';
 
 
 
 const Loguin = () => {
-    
+
     const { setLogin } = useContext(LoguinContext);
 
     const navigate = useNavigate()
     const token = sessionStorage.getItem('token')
+
+    
+    useEffect(() => {
+        // Obtengo el main y le agrego la clase para que sólo en esta vista exista el fondo
+        const main = document.querySelector('main');
+        main.classList.add('background-img')
+
+        return () => {
+            main.classList.remove('background-img')
+        }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     const submitHandler = (e) => {
@@ -32,7 +45,7 @@ const Loguin = () => {
                 icon: 'warning',
                 title: 'Oops...',
                 text: 'Los campos no pueden estar vacíos',
-              })
+            })
             return
         }
 
@@ -41,7 +54,7 @@ const Loguin = () => {
                 icon: 'warning',
                 title: 'Revisa tu correo electrónico',
                 text: 'El email ingresado debe corresponder a un formato válido de correo electrónico',
-              })
+            })
             return
         }
 
@@ -50,7 +63,7 @@ const Loguin = () => {
                 icon: 'error',
                 title: 'Revisa tus credenciales',
                 text: 'El email o la contraseña son incorrectos',
-              })
+            })
             return
         }
 
@@ -76,6 +89,8 @@ const Loguin = () => {
                 })
 
                 setLogin(true);
+                // const main = document.querySelector('main');
+                // main.classList.remove('background-img')
                 const tokenRecibido = res.data.token;
                 sessionStorage.setItem('token', tokenRecibido);
                 navigate('/listado');

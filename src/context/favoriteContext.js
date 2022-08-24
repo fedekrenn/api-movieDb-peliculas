@@ -9,6 +9,7 @@ const FavoriteProvider = ({ children }) => {
 
     const favMovies = JSON.parse(localStorage.getItem('favs')) || [];
 
+
     useEffect(() => {
 
         favMovies !== [] && setFavorites(favMovies);
@@ -16,6 +17,7 @@ const FavoriteProvider = ({ children }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    
     const addOrRemoveFavorite = (movie) => {
 
         // Agregar clase de boton
@@ -40,18 +42,10 @@ const FavoriteProvider = ({ children }) => {
         }
     }
 
-    const setBackground = () => {
-
-        const main = document.querySelector('main');
-
-        main.classList.remove('background-img');
-    }
-
     const data = {
         favorites,
         setFavorites,
-        addOrRemoveFavorite,
-        setBackground
+        addOrRemoveFavorite
     }
 
     return (

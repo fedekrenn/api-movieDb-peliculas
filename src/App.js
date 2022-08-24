@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className='background-img'>
+      <main>
         <Routes>
           <Route path="/" element={<Loguin />} />
           <Route path="/listado" element={<MovieList />} />
