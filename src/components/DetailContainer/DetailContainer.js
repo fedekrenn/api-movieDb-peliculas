@@ -6,7 +6,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 // Componentes
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
-import Detail from '../Detail/Detail';
+import Detail from '../../pages/Detail/Detail';
 
 
 const DetailContainer = () => {

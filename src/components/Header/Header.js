@@ -35,7 +35,7 @@ const Header = () => {
                         <Navbar.Text className='anchor-navbar'>
                             <Link to={'/favoritos'}>
                                 Favoritos
-                                {favorites.length > 0 && <sup> {favorites.length}</sup>}
+                                {favorites.length > 0 && <sup> {token && favorites.length}</sup>}
                             </Link>
                         </Navbar.Text>
                     </Nav>

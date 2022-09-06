@@ -3,14 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 // Librerías
 import { Routes, Route } from "react-router-dom";
+// Pages
+import MovieList from "./pages/MovieList/MovieList";
+import Loguin from "./pages/Login/Login";
+import Results from './pages/Results/Results';
+import Favorites from './pages/Favorites/Favorites';
 // Componentes
-import Loguin from "./components/Login/Login";
-import MovieList from "./components/MovieList/MovieList";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Detail from "./components/DetailContainer/DetailContainer";
-import Results from './components/Results/Results';
-import Favorites from './components/Favorites/Favorites';
 
 
 

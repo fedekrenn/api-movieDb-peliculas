@@ -5,8 +5,8 @@ import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 // Componentes
-import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
-import MovieCard from '../MovieCard/MovieCard';
+import LoaderSpinner from '../../components/LoaderSpinner/LoaderSpinner';
+import MovieCard from '../../components/MovieCard/MovieCard';
 
 
 

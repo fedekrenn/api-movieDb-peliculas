@@ -4,7 +4,7 @@ import FavoriteContext from '../../context/favoriteContext';
 // Librerías
 import { Navigate } from 'react-router-dom';
 // Componentes
-import MovieCard from '../MovieCard/MovieCard';
+import MovieCard from '../../components/MovieCard/MovieCard';
 
 
 const Favorites = () => {

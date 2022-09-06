@@ -8,10 +8,10 @@
 
 // Layout
 @use './components/SearchBar/searchBar';
-@use './components/Detail/detail';
-@use './components/Favorites/favorites';
 @use './components/Footer/footer';
 @use './components/Header/header';
-@use './components/MovieList/movieList';
-@use './components/Results/results';
-@use './components/MovieCard/movieCard'
+@use './components/MovieCard/movieCard';
+@use './pages/Favorites/favorites';
+@use './pages/Results/results';
+@use './pages/Detail/detail';
+@use './pages/MovieList/movieList';
