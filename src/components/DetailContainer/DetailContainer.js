@@ -11,7 +11,7 @@ import Detail from '../../pages/Detail/Detail';
 
 const DetailContainer = () => {
 
-    let token = sessionStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
 
     const { id } = useParams();
 
