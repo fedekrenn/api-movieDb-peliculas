@@ -34,7 +34,7 @@ const SearchBar = () => {
 
     return (
         <form className='search-movies' onSubmit={submitHandler}>
-            <label for="search" className='search-movies__label'>
+            <label htmlFor="search" className='search-movies__label'>
                 <input type="text" id="search" name="keyword" placeholder="Buscar película..." />
                 <Button type="submit" variant='primary' className='search-movies__btn'>Buscar</Button>
             </label>

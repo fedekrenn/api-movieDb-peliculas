@@ -8,6 +8,7 @@ import MovieList from "./pages/MovieList/MovieList";
 import Loguin from "./pages/Login/Login";
 import Results from './pages/Results/Results';
 import Favorites from './pages/Favorites/Favorites';
+import CategoriesList from './pages/CategoriesList/CategoriesList';
 // Componentes
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Loguin />} />
           <Route path="/listado" element={<MovieList />} />
           <Route path="/detalle/:id" element={<Detail />} />
+          <Route path="/categoria/:id" element={<CategoriesList />} />
           <Route path="/resultados/:keyword" element={<Results />} />
           <Route path="/favoritos" element={<Favorites />} />
         </Routes>

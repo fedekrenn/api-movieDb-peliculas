@@ -37,13 +37,10 @@ const Header = () => {
                 })
             })
 
-
         token && setLogin(true);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    console.log(categories)
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -59,14 +56,20 @@ const Header = () => {
                                 {favorites.length > 0 && <sup> {token && favorites.length}</sup>}
                             </Link>
                         </Navbar.Text>
-                        <Dropdown>
-                            <Dropdown.Toggle id="dropdown-basic">Categorías</Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                {categories.map((category, i) => (
-                                    <Dropdown.Item key={i} >{category.name}</Dropdown.Item>
-                                ))}
-                            </Dropdown.Menu>
-                        </Dropdown>
+                        {login &&
+                            <Dropdown>
+                                <Dropdown.Toggle id="dropdown-basic">Categorías</Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    {categories.map((category, i) => (
+                                        <Dropdown.Item as='button' key={i}>
+                                            <Link to={`/categoria/${category.id}`} state={category.name}>
+                                                {category.name}
+                                            </Link>
+                                        </Dropdown.Item>
+                                    ))}
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        }
                     </Nav>
                     {login && <SearchBar />}
                 </Navbar.Collapse>

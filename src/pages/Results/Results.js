@@ -18,8 +18,9 @@ const Results = () => {
 
     useEffect(() => {
 
-        axios
-            .get(`https://api.themoviedb.org/3/search/movie?api_key=d492a22487e205c56d74c2e5d17a5013&language=es-ES&query=${keyword}`)
+        const ENDPOINT = `https://api.themoviedb.org/3/search/movie?api_key=d492a22487e205c56d74c2e5d17a5013&language=es-ES&query=${keyword}`
+
+        axios.get(ENDPOINT)
             .then(res => {
                 const moviesArray = res.data.results;
                 moviesArray.length === 0 && Swal.fire({
