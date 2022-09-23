@@ -12,7 +12,7 @@ import CategoriesList from './pages/CategoriesList/CategoriesList';
 // Componentes
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Detail from "./components/DetailContainer/DetailContainer";
+import DetailContainer from "./pages/DetailContainer/DetailContainer";
 
 
 
@@ -25,7 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Loguin />} />
           <Route path="/listado" element={<MovieList />} />
-          <Route path="/detalle/:id" element={<Detail />} />
+          <Route path="/detalle/:id" element={<DetailContainer />} />
           <Route path="/categoria/:id" element={<CategoriesList />} />
           <Route path="/resultados/:keyword" element={<Results />} />
           <Route path="/favoritos" element={<Favorites />} />

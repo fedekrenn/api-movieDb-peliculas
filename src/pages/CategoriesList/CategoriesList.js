@@ -40,21 +40,18 @@ const CategoriesList = () => {
         }
     }, [id])
 
-    return (
-        !token ?
-            <Navigate to="/" replace />
-            :
-            loading ?
-                <LoaderSpinner />
-                :
-                <>
-                    <h2>Películas en la categoría "{location.state}"</h2>
-                    <section className="total-movies">
-                        {movies.map((movie, i) => <MovieCard key={i} movie={movie} />)}
-                    </section>
-                </>
-    )
+    if (!token) return <Navigate to='/login' />
 
+    if (loading) return <LoaderSpinner />
+
+    return (
+        <>
+            <h2>Películas en la categoría "{location.state}"</h2>
+            <section className="total-movies">
+                {movies.map((movie, i) => <MovieCard key={i} movie={movie} />)}
+            </section>
+        </>
+    )
 }
 
 export default CategoriesList

@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
+
 const Detail = ({ movie, videoData }) => {
 
     const { title, backdrop_path, overview, genres, release_date, vote_average, tagline } = movie;
 
+    console.log(genres)
 
     return (
         <>
@@ -12,7 +15,13 @@ const Detail = ({ movie, videoData }) => {
                 <div className='movie-detail__genre'>
                     <h5>Género</h5>
                     <ul>
-                        {genres.map((genre, i) => <li className="li-item" key={i}>{genre.name}</li>)}
+                        {genres.map((genre, i) => (
+                            <Link to={`/categoria/${genre.id}`} state={genre.name}>
+                                <li className="li-item" key={i}>
+                                    {genre.name}
+                                </li>
+                            </Link>
+                        ))}
                     </ul>
                 </div>
                 <div className="movie-detail__child">

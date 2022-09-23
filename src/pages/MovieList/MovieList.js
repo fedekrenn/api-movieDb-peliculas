@@ -35,19 +35,17 @@ const MovieList = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    if (!token) return <Navigate to='/' />
+
+    if (loading) return <LoaderSpinner />
+
     return (
-        !token ?
-            <Navigate to="/" replace />
-            :
-            loading ?
-                <LoaderSpinner />
-                :
-                <>
-                    <h2>Las mejores películas</h2>
-                    <section className="total-movies">
-                        {moviesList.map((movie, i) => <MovieCard key={i} movie={movie} />)}
-                    </section>
-                </>
+        <>
+            <h2>Las mejores películas</h2>
+            <section className="total-movies">
+                {moviesList.map((movie, i) => <MovieCard key={i} movie={movie} />)}
+            </section>
+        </>
     )
 }
 

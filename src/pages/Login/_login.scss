@@ -1,0 +1,14 @@
+.form-access{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.829);
+    padding-bottom: 50px;
+    border-radius: 15px;
+    color: azure;
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+}

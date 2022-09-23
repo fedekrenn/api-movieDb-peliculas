@@ -49,20 +49,18 @@ const Results = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [keyword]);
 
+    if (!token) return <Navigate to='/' />
+
+    if (loading) return <LoaderSpinner />
+
     return (
-        !token ?
-            <Navigate to="/" replace />
-            :
-            loading ?
-                <LoaderSpinner />
-                :
-                <>
-                    <h2>Resultados de la búsqueda de: {keyword}</h2>
-                    <section className="total-movies">
-                        {moviesResult.length === 0 && <h4>No se encontraron resultados</h4>}
-                        {moviesResult.map((movie, i) => <MovieCard key={i} movie={movie} />)}
-                    </section>
-                </>
+        <>
+            <h2>Resultados de la búsqueda de: {keyword}</h2>
+            <section className="total-movies">
+                {moviesResult.length === 0 && <h4>No se encontraron resultados</h4>}
+                {moviesResult.map((movie, i) => <MovieCard key={i} movie={movie} />)}
+            </section>
+        </>
     )
 }
 

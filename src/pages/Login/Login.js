@@ -1,13 +1,14 @@
-// Librerías
-import axios from 'axios';
-import Swal from 'sweetalert2'
+// React
 import { useEffect } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
+// Librerías
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 // Context
 import { useContext } from 'react';
 import LoguinContext from '../../context/loguinContext';
-// Componentes
-import Button from 'react-bootstrap/Button';
 
 
 
@@ -18,7 +19,7 @@ const Loguin = () => {
     const navigate = useNavigate()
     const token = sessionStorage.getItem('token')
 
-    
+
     useEffect(() => {
         // Obtengo el main y le agrego la clase para que sólo en esta vista exista el fondo
         const main = document.querySelector('main');
@@ -28,7 +29,7 @@ const Loguin = () => {
             main.classList.remove('background-img')
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
@@ -89,39 +90,31 @@ const Loguin = () => {
                 })
 
                 setLogin(true);
-                // const main = document.querySelector('main');
-                // main.classList.remove('background-img')
                 const tokenRecibido = res.data.token;
                 sessionStorage.setItem('token', tokenRecibido);
                 navigate('/listado');
             })
     }
 
+    if (token) return <Navigate to='/listado' />
+
     return (
-        <>
-            {token ?
-                <Navigate to="/listado" replace />
-                :
-                <>
-                    <h2>Formulario de login</h2>
-                    <form onSubmit={submitHandler}>
-                        <label>
-                            <span>Usuario: </span>
-                            <br />
-                            <input type="email" placeholder="Ingresa tu email" name="email" />
-                        </label>
-                        <br />
-                        <label>
-                            <span>Contraseña: </span>
-                            <br />
-                            <input type="password" placeholder="Ingresa tu contraseña" name="password" />
-                        </label>
-                        <br />
-                        <Button type="submit" variant='success'>Iniciar sesión</Button>
-                    </form>
-                </>
-            }
-        </>
+        <div className='form-access'>
+            <h2>Formulario de login</h2>
+            <Form onSubmit={submitHandler}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" name="email" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Contraseña:</Form.Label>
+                    <Form.Control type="password" placeholder="Password" name="password" />
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Iniciar sesión
+                </Button>
+            </Form>
+        </div>
     )
 }
 

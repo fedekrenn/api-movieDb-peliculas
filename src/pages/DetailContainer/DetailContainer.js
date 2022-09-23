@@ -5,8 +5,8 @@ import { Navigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 // Componentes
-import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
-import Detail from '../../pages/Detail/Detail';
+import LoaderSpinner from '../../components/LoaderSpinner/LoaderSpinner';
+import Detail from '../../components/Detail/Detail';
 
 
 const DetailContainer = () => {
@@ -42,14 +42,12 @@ const DetailContainer = () => {
         /* eslint-disable react-hooks/exhaustive-deps */
     }, []);
 
+    if (!token) return <Navigate to='/' />
+
+    if (loading) return <LoaderSpinner />
+
     return (
-        !token ?
-            <Navigate to="/" replace />
-            :
-            loading ?
-                <LoaderSpinner />
-                :
-                <Detail movie={movie} videoData={videoData} />
+        <Detail movie={movie} videoData={videoData} />
     )
 }
 

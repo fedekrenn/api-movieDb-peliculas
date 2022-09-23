@@ -11,7 +11,8 @@
 @use './components/Footer/footer';
 @use './components/Header/header';
 @use './components/MovieCard/movieCard';
+@use './components/Detail/detail';
 @use './pages/Favorites/favorites';
 @use './pages/Results/results';
-@use './pages/Detail/detail';
 @use './pages/MovieList/movieList';
+@use './pages/Login/login'
