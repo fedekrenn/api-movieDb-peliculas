@@ -12,13 +12,15 @@ const Favorites = () => {
     const token = sessionStorage.getItem('token');
     const { favorites } = useContext(FavoriteContext);
 
-    if (!token) return <Navigate to='/login' />
+    if (!token) return <Navigate to='/' />
 
     return (
-        <section className="total-movies">
-            {favorites.length === 0 ? <h2>Explora para agregar tus películas favoritas!</h2> : <h2>Tus películas preferidas:</h2>}
-            {favorites.map((movie, i) => <MovieCard key={i} movie={movie} />)}
-        </section>
+            <>
+                {favorites.length === 0 ? <h2>Explora para agregar tus películas favoritas!</h2> : <h2>Tus películas preferidas:</h2>}
+                <section className="total-movies">
+                    {favorites.map((movie, i) => <MovieCard key={i} movie={movie} />)}
+                </section>
+            </>
 
     )
 }
