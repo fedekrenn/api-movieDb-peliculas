@@ -1,27 +1,30 @@
 // React
-import { useEffect } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, Navigate, Link } from 'react-router-dom';
 // Librerías
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 // Context
 import { useContext } from 'react';
 import LoguinContext from '../../context/loguinContext';
-
+// Firebase Auth
+import { signInWithEmailAndPassword } from "firebase/auth";
+import auth from '../../utils/firebaseConfig';
 
 
 const Loguin = () => {
 
     const { setLogin } = useContext(LoguinContext);
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     const navigate = useNavigate()
     const token = sessionStorage.getItem('token')
 
 
     useEffect(() => {
-        // Obtengo el main y le agrego la clase para que sólo en esta vista exista el fondo
         const main = document.querySelector('main');
         main.classList.add('background-img')
 
@@ -33,13 +36,9 @@ const Loguin = () => {
     }, [])
 
 
-    const submitHandler = (e) => {
+    const handleSubmit = (e) => {
 
         e.preventDefault();
-
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (email === "" || password === "") {
             Swal.fire({
@@ -50,27 +49,13 @@ const Loguin = () => {
             return
         }
 
-        if (!regexEmail.test(email) && email !== "") {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Revisa tu correo electrónico',
-                text: 'El email ingresado debe corresponder a un formato válido de correo electrónico',
-            })
-            return
-        }
-
-        if (email !== 'challenge@alkemy.org' || password !== 'react') {
-            Swal.fire({
-                icon: 'error',
-                title: 'Revisa tus credenciales',
-                text: 'El email o la contraseña son incorrectos',
-            })
-            return
-        }
-
-        axios
-            .post('http://challenge-react.alkemy.org/', { email, password })
-            .then(res => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const receivedToken = userCredential.user.accessToken;
+                sessionStorage.setItem('token', receivedToken);
+                setLogin(true);
+                navigate('/listado');
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -89,11 +74,15 @@ const Loguin = () => {
                     title: 'Iniciaste sesión correctamente!'
                 })
 
-                setLogin(true);
-                const tokenRecibido = res.data.token;
-                sessionStorage.setItem('token', tokenRecibido);
-                navigate('/listado');
             })
+            .catch((error) => {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Usuario o contraseña incorrectos',
+                })
+            });
     }
 
     if (token) return <Navigate to='/listado' />
@@ -101,18 +90,23 @@ const Loguin = () => {
     return (
         <div className='form-access'>
             <h2>Formulario de login</h2>
-            <Form onSubmit={submitHandler}>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email:</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" name="email" />
+                    <Form.Control type="email" placeholder="Enter email" name="email" onChange={(e) => setEmail(e.target.value)} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Contraseña:</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name="password" />
+                    <Form.Control type="password" placeholder="Password" name="password" onChange={(e) => setPassword(e.target.value)} />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Iniciar sesión
                 </Button>
+                <Link to="/registro">
+                    <Button variant="primary" type="submit" className='register-btn'>
+                        Crear cuenta
+                    </Button>
+                </Link>
             </Form>
         </div>
     )

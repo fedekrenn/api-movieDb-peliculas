@@ -13,6 +13,7 @@ import CategoriesList from './pages/CategoriesList/CategoriesList';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import DetailContainer from "./pages/DetailContainer/DetailContainer";
+import Register from './pages/Register/Register';
 
 
 
@@ -23,6 +24,7 @@ function App() {
       <Header />
       <main>
         <Routes>
+          <Route path="/registro" element={<Register/>}/>
           <Route path="/" element={<Loguin />} />
           <Route path="/listado" element={<MovieList />} />
           <Route path="/detalle/:id" element={<DetailContainer />} />
