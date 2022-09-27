@@ -5,40 +5,30 @@ const FavoriteContext = createContext();
 
 const FavoriteProvider = ({ children }) => {
 
-    const [favorites, setFavorites] = useState([]);
-
-    const favMovies = JSON.parse(localStorage.getItem('favs')) || [];
-
+    const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favs')) || []);
 
     useEffect(() => {
 
-        favMovies !== [] && setFavorites(favMovies);
+        localStorage.setItem('favs', JSON.stringify(favorites));
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [favorites]);
 
-    
     const addOrRemoveFavorite = (movie) => {
 
         // Agregar clase de boton
         const btn = document.querySelector(`[data-movie-id="${movie.id}"]`);
         btn.classList.toggle('marked');
 
-        // const btn = Event.currentTarget;
-
-        const isInArray = favMovies.find(oneMovie => oneMovie.id === movie.id)
+        const isInArray = favorites.find(oneMovie => oneMovie.id === movie.id)
 
         if (!isInArray) {
-            favMovies.push(movie)
-            localStorage.setItem('favs', JSON.stringify(favMovies))
-            setFavorites(favMovies);
+
+            setFavorites((favorites) => favorites.concat(movie));
+
         } else {
-            // Encuentro el indice y lo elimino del array original
-            const deleteIndex = favMovies.findIndex(movieToDelete => movieToDelete.id === movie.id)
-            favMovies.splice(deleteIndex, 1)
-            setFavorites(favMovies);
-            // Seteo el local
-            localStorage.setItem('favs', JSON.stringify(favMovies))
+
+            const deleteFav = favorites.filter(oneMovie => oneMovie.id !== movie.id);
+            setFavorites(deleteFav);
         }
     }
 

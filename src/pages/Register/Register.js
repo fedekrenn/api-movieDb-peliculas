@@ -13,6 +13,7 @@ const Register = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
 
     const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -47,6 +48,15 @@ const Register = () => {
                 icon: 'warning',
                 title: 'Revisa tu correo electrónico',
                 text: 'El email ingresado debe corresponder a un formato válido de correo electrónico',
+            })
+            return
+        }
+
+        if (password !== password2) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Las contraseñas no coinciden',
             })
             return
         }
@@ -88,6 +98,11 @@ const Register = () => {
                     <Form.Label>Contraseña:</Form.Label>
                     <Form.Control type="password" placeholder="Password" name="password" onChange={(e) => setPassword(e.target.value)} />
                 </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPasswordTwo">
+                    <Form.Label>Repite tu contraseña:</Form.Label>
+                    <Form.Control type="password" placeholder="Password" name="password2" onChange={(e) => setPassword2(e.target.value)} />
+                </Form.Group>
+
                 <Button variant="primary" type="submit">
                     Registrarse
                 </Button>
