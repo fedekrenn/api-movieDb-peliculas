@@ -1,14 +1,11 @@
 # 🎞 Krennflix | Reviews de películas
 
 ## 📝 Detalle
-- **Single Page Application** realizada con React.JS. Este trabajo es una webapp donde podés conocer las últimas películas, ver detalles, valoraciones, críticas, trailers y mucho más! Se emplea Sass para los estilos y Bootstrap para los componentes
+- **Single Page Application** realizada con React.JS. Este trabajo es una webapp donde podés conocer las últimas películas, ver detalles, valoraciones, críticas, trailers y mucho más! Cuenta con filtro de categoría y barra de búsqueda. Se emplea Sass para los estilos, Bootstrap para los componentes y Sweet Alert para las notificaciones
 
 ## ✅ Acceso vía logueo
 
-Para acceder debemos usar las siguientes credenciales:
-- Usuario: challenge@alkemy.org
-- Password: react
-
+Para acceder debemos loguearnos, para ello se utiliza Firebase Authentication, por lo que podés crear una cuenta de manera muy simple, luego a través del logueo podés acceder al listado de películas
 
 
 ## ⌨🖱 Instalación
