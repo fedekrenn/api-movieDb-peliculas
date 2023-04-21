@@ -1,18 +1,18 @@
-.anchor-navbar{
-    margin: 0 10px;
+.anchor-navbar {
+  margin: 0 10px;
 }
 
-sup{
-    color: #be0a0a;
-    font-weight: bold;
+sup {
+  color: #be0a0a;
+  font-weight: bold;
 }
 
-span.navbar-brand{
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #be0a0a;
-    transition: .5s;
-    &:hover{
-        color: #c03737;
-    }
+span.navbar-brand {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #be0a0a;
+  transition: 0.5s;
+  &:hover {
+    color: #c03737;
+  }
 }

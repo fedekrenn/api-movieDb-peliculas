@@ -1,18 +1,17 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  &:hover {
     color: inherit;
-    &:hover{
-        color: inherit;
-    }
+  }
 }
 
 ul {
-    padding-left: 0;
+  padding-left: 0;
 }
-

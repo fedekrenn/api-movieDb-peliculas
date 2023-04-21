@@ -1,48 +1,41 @@
 // React
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from 'react'
 // Creación del contexto
-const FavoriteContext = createContext();
+const FavoriteContext = createContext()
 
 const FavoriteProvider = ({ children }) => {
+  const [favorites, setFavorites] = useState(
+    JSON.parse(localStorage.getItem('favs')) || []
+  )
 
-    const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favs')) || []);
+  useEffect(() => {
+    localStorage.setItem('favs', JSON.stringify(favorites))
+  }, [favorites])
 
-    useEffect(() => {
+  const addOrRemoveFavorite = (movie) => {
+    // Agregar clase de boton
+    const btn = document.querySelector(`[data-movie-id="${movie.id}"]`)
+    btn.classList.toggle('marked')
 
-        localStorage.setItem('favs', JSON.stringify(favorites));
+    const isInArray = favorites.find((oneMovie) => oneMovie.id === movie.id)
 
-    }, [favorites]);
-
-    const addOrRemoveFavorite = (movie) => {
-
-        // Agregar clase de boton
-        const btn = document.querySelector(`[data-movie-id="${movie.id}"]`);
-        btn.classList.toggle('marked');
-
-        const isInArray = favorites.find(oneMovie => oneMovie.id === movie.id)
-
-        if (!isInArray) {
-
-            setFavorites((favorites) => favorites.concat(movie));
-
-        } else {
-
-            const deleteFav = favorites.filter(oneMovie => oneMovie.id !== movie.id);
-            setFavorites(deleteFav);
-        }
+    if (!isInArray) {
+      setFavorites((favorites) => favorites.concat(movie))
+    } else {
+      const deleteFav = favorites.filter((oneMovie) => oneMovie.id !== movie.id)
+      setFavorites(deleteFav)
     }
+  }
 
-    const data = {
-        favorites,
-        setFavorites,
-        addOrRemoveFavorite
-    }
+  const data = {
+    favorites,
+    setFavorites,
+    addOrRemoveFavorite,
+  }
 
-    return (
-        <FavoriteContext.Provider value={data}>
-            {children}
-        </FavoriteContext.Provider>
-    )
+  return (
+    <FavoriteContext.Provider value={data}>{children}</FavoriteContext.Provider>
+  )
 }
 
 export default FavoriteContext

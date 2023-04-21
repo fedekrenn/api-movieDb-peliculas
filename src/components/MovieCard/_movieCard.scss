@@ -1,29 +1,29 @@
 button.favorite-btn {
-    width: 30px;
-    height: 30px;
-    background-color: #f2f2f2;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    border: none;
+  width: 30px;
+  height: 30px;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
 }
 
-.marked{
-    z-index: 100;
+.marked {
+  z-index: 100;
 }
 
-.vote-average{
-    color: black;
-    font-weight: bold;
-    text-align: left;
-    width: 100%;
-    margin-bottom: .5em;
+.vote-average {
+  color: black;
+  font-weight: bold;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 0.5em;
 }
 
-.card p{
-    height: 200px;
+.card p {
+  height: 200px;
 }

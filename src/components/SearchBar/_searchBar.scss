@@ -1,14 +1,14 @@
 .search-movies {
-    .search-movies__btn{
-        padding: 3px;
-        background-color: #be0a0a;
-        border: 1px solid #be0a0a;
+  .search-movies__btn {
+    padding: 3px;
+    background-color: #be0a0a;
+    border: 1px solid #be0a0a;
+  }
+  .search-movies__label {
+    display: flex;
+    flex-direction: row;
+    button {
+      margin-left: 5px;
     }
-    .search-movies__label{
-        display: flex;
-        flex-direction: row;
-        button{
-            margin-left: 5px;
-        }
-    }
+  }
 }
