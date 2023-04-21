@@ -11,8 +11,6 @@ const Detail = ({ movie, videoData }) => {
     tagline,
   } = movie
 
-  console.log(genres)
-
   return (
     <>
       <h2>{title}</h2>
