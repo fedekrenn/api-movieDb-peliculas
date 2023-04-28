@@ -11,7 +11,6 @@ const MovieCard = ({ movie }) => {
 
   const { title, overview, poster_path, id, vote_average } = movie
 
-  // Saber si la película está en favoritos
   const isFavorite = favorites.some((fav) => fav.id === id)
 
   return (
@@ -21,20 +20,21 @@ const MovieCard = ({ movie }) => {
         variant='top'
         src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
       />
-      <Button
-        className={isFavorite ? 'favorite-btn marked' : 'favorite-btn'}
-        onClick={() => addOrRemoveFavorite(movie)}
-        data-movie-id={movie.id}
-      >
-        ❤️
-      </Button>
-      <Button
-        className='favorite-btn'
-        onClick={() => addOrRemoveFavorite(movie)}
-        data-movie-id={movie.id}
-      >
-        🖤
-      </Button>
+      {isFavorite ? (
+        <Button
+          className='favorite-btn'
+          onClick={() => addOrRemoveFavorite(movie)}
+        >
+          ❤️
+        </Button>
+      ) : (
+        <Button
+          className='favorite-btn'
+          onClick={() => addOrRemoveFavorite(movie)}
+        >
+          🖤
+        </Button>
+      )}
       <Card.Body>
         <Card.Title>{title.substring(0, 35)}...</Card.Title>
         <div className='vote-average'>⭐ {vote_average}</div>

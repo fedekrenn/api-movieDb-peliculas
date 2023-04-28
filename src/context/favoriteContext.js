@@ -13,10 +13,7 @@ const FavoriteProvider = ({ children }) => {
   }, [favorites])
 
   const addOrRemoveFavorite = (movie) => {
-    // Agregar clase de boton
-    const btn = document.querySelector(`[data-movie-id="${movie.id}"]`)
-    btn.classList.toggle('marked')
-
+    
     const isInArray = favorites.find((oneMovie) => oneMovie.id === movie.id)
 
     if (!isInArray) {
