@@ -22,9 +22,11 @@ const Header = () => {
 
   const token = sessionStorage.getItem('token')
 
+  const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
+
   useEffect(() => {
     const ENDPOINT =
-      'https://api.themoviedb.org/3/genre/movie/list?api_key=d492a22487e205c56d74c2e5d17a5013&language=es-ES'
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=es-ES`
     axios
       .get(ENDPOINT)
       .then((res) => {

@@ -15,8 +15,10 @@ const Results = () => {
 
   let token = sessionStorage.getItem('token')
 
+  const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
+
   useEffect(() => {
-    const ENDPOINT = `https://api.themoviedb.org/3/search/movie?api_key=d492a22487e205c56d74c2e5d17a5013&language=es-ES&query=${keyword}`
+    const ENDPOINT = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=es-ES&query=${keyword}`
 
     axios
       .get(ENDPOINT)

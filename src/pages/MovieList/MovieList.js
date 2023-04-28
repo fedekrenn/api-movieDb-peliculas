@@ -10,12 +10,15 @@ import MovieCard from '../../components/MovieCard/MovieCard'
 
 const MovieList = () => {
   let token = sessionStorage.getItem('token')
+
   const [moviesList, setMoviesList] = useState([])
   const [loading, setLoading] = useState(true)
 
+  const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
+
   useEffect(() => {
     const endPoint =
-      'https://api.themoviedb.org/3/discover/movie?api_key=d492a22487e205c56d74c2e5d17a5013&language=es-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate'
+      `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=es-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`
     axios
       .get(endPoint)
       .then((res) => {

@@ -13,8 +13,10 @@ const CategoriesList = () => {
 
   const token = sessionStorage.getItem('token')
 
+  const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
+
   useEffect(() => {
-    const ENDPOINT = `https://api.themoviedb.org/3/discover/movie?api_key=d492a22487e205c56d74c2e5d17a5013&language=es-ES&with_genres=${id}`
+    const ENDPOINT = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=es-ES&with_genres=${id}`
 
     axios
       .get(ENDPOINT)

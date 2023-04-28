@@ -24,9 +24,13 @@ const Detail = ({ movie, videoData }) => {
         <div className='movie-detail__genre'>
           <h5>Género</h5>
           <ul>
-            {genres.map((genre, i) => (
-              <Link to={`/categoria/${genre.id}`} state={genre.name}>
-                <li className='li-item' key={i}>
+            {genres.map((genre) => (
+              <Link
+                to={`/categoria/${genre.id}`}
+                state={genre.name}
+                key={genre.id}
+              >
+                <li className='li-item'>
                   {genre.name}
                 </li>
               </Link>
@@ -48,9 +52,9 @@ const Detail = ({ movie, videoData }) => {
           <iframe
             src={`https://www.youtube.com/embed/${videoData.key}`}
             title='YouTube video player'
-            frameborder='0'
+            frameBorder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         ) : (
           <p>No hay trailer disponible</p>
