@@ -16,6 +16,8 @@ const MovieList = () => {
 
   const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
+  console.log(moviesList)
+
   useEffect(() => {
     const endPoint =
       `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=es-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`
@@ -23,7 +25,7 @@ const MovieList = () => {
       .get(endPoint)
       .then((res) => {
         const apiData = res.data.results
-        setMoviesList(apiData)
+        setMoviesList(apiData.sort((a, b) => b.vote_average - a.vote_average))
         setLoading(false)
       })
       .catch((err) => {

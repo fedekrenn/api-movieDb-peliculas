@@ -13,14 +13,14 @@ const Detail = ({ movie, videoData }) => {
 
   return (
     <>
+      <img
+        className='img-detail-movie'
+        src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+        alt={title}
+      />
       <h2>{title}</h2>
       <h3 className='movie-tagline'>{tagline}</h3>
-      <div className='movie-detail '>
-        <img
-          className='img-detail'
-          src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
-          alt={title}
-        />
+      <div className='movie-detail'>
         <div className='movie-detail__genre'>
           <h5>Género</h5>
           <ul>
@@ -30,9 +30,7 @@ const Detail = ({ movie, videoData }) => {
                 state={genre.name}
                 key={genre.id}
               >
-                <li className='li-item'>
-                  {genre.name}
-                </li>
+                <li className='li-item'>{genre.name}</li>
               </Link>
             ))}
           </ul>
@@ -52,7 +50,6 @@ const Detail = ({ movie, videoData }) => {
           <iframe
             src={`https://www.youtube.com/embed/${videoData.key}`}
             title='YouTube video player'
-            frameBorder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
             allowFullScreen
           ></iframe>

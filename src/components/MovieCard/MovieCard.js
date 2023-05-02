@@ -11,7 +11,7 @@ const MovieCard = ({ movie }) => {
 
   const { title, overview, poster_path, id, vote_average } = movie
 
-  const isFavorite = favorites.some((fav) => fav.id === id)
+  const isFavorite = favorites.some(fav => fav.id === id)
 
   return (
     <Card className='movie-detail'>

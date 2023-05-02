@@ -40,6 +40,7 @@ const CategoriesList = () => {
       setMovies([])
       setLoading(true)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
   if (!token) return <Navigate to='/login' />
